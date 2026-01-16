@@ -46,6 +46,14 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
+export type RowID = number;
+
+export interface RowElement {
+  firstName: string;
+  lastName: string;
+  age?: number;
+}
+
 //  C L A S S ----------------------------------------------
 
 class StudentClass implements StudentClassInterface {
@@ -154,6 +162,23 @@ function executeWork(employee: Directors | Teacher): void {
 
 executeWork(createEmployee(200));
 executeWork(createEmployee(1000));  
+
+type Subjects = "Math" | "History";
+
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === "Math") {
+    return "Teaching Math";
+  } else {
+    return "Teaching History";
+  }
+}
+
+console.log(teachClass("Math"));     
+console.log(teachClass("History")); 
+
+export declare function insertRow(row: RowElement): RowID;
+export declare function deleteRow(rowId: RowID): void;
+export declare function updateRow(rowId: RowID, row: RowElement): RowID;
 
 
 //  U S E R   V I E W ----------------------------------------------------
