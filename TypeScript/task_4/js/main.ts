@@ -20,6 +20,16 @@ interface Directors extends Teacher {
   numberOfReports: number,
 }
 
+interface StudentConstructor {
+  firstName: string;
+  lastName: string;
+}
+
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
 
 // I N S T A N C I A T I O N ------------------------------------------------
 const teacher1: Teacher = {
@@ -45,6 +55,8 @@ const allStudents: Student[] = [
   { firstName: 'Philemon', lastName: 'Chobert', age: 17, location: 'Saint-Vaast' }
 ];
 
+
+
 // F U N C T I O N S ------------------------------------------------------------------
 
 interface printTeacherFunction {
@@ -59,6 +71,27 @@ const printTeacher: printTeacherFunction = (
 };
 
 console.log(printTeacher('Maximilien', 'Chobert'));
+
+
+
+// C L A S S ----------------------------------------------
+class StudentClass implements StudentClassInterface {
+  private firstName: string;
+  private lastName: string;
+
+  constructor({ firstName, lastName }: StudentConstructor) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
 
 
 // U S E R   V I E W ----------------------------------------------------
